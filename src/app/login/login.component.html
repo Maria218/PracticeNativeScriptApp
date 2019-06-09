@@ -4,10 +4,10 @@
 	<StackLayout class="form">
 		<Image src="~/app/images/logo.jpg"></Image>
 		<TextField hint="Email Address" keyboardType="email"
-			autocorrect="false" autocapitalizationType="none" class="input input-border"></TextField>
+			autocorrect="false" autocapitalizationType="none" [(ngModel)]="email" class="input input-border"></TextField>
 		<TextField class="input input-border" hint="Password" secure="true"></TextField>
 	
-		<Button class="btn btn-primary" text="Sign in"></Button>
-		<Button text="Sign up for Groceries"></Button>
+		<Button [text]="isLoggingIn ? 'Sign In' : 'Sign Up'" class="btn btn-primary" text="Sign in" (tap)="submit()"></Button>
+		<Button [text]="isLoggingIn ? 'Sign Up' : 'Back to Login'" text="Sign up for Groceries" (tap)="toggleDisplay()"></Button>
 	</StackLayout>
 </FlexboxLayout>
