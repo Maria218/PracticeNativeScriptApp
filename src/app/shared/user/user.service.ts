@@ -29,6 +29,23 @@ export class UserService {
 		);
 	}
 
+	login(user: User) {
+		return this.http.post(
+			Config.apiUrl + "user/" + Config.appKey + "/login",
+			JSON.stringify({
+				username: user.email,
+				password: user.password
+			}),
+			{headers: this.getCommonHeaders()}
+		).pipe(
+			map(response => response.json()),
+			tap(data => {
+				Config.token = data._kmd.authtoken
+			}),
+			catchError(this.handleErrors)
+		);
+	}
+
 	getCommonHeaders() {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
