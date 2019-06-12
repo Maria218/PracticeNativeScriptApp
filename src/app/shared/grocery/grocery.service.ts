@@ -59,4 +59,25 @@ export class GroceryService {
 			catchError(this.handleErrors)
 		)
 	}
+
+	delete(id: string) {
+		return this.http.delete(
+			this.baseUrl + "/" + id,
+			{ headers: this.getCommonHeaders() }
+		).pipe(
+			map(res => res.json()),
+			catchError(this.handleErrors)
+		);
+	}
+
+	// Trying editing myself???
+	// edit(id: string) {
+	// 	return this.http.put(
+	// 		this.baseUrl + "/" + id,
+	// 		{ headers: this.getCommonHeaders() }
+	// 	).pipe(
+	// 		map(res => res.json()),
+	// 		catchError(this.handleErrors)
+	// 	)
+	// }
 }
