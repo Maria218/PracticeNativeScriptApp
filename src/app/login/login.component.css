@@ -30,3 +30,11 @@ TextField {
 	placeholder-color: #C4AFB4;
 	color: #000
 }
+
+.dark {
+	background-color: #301217;
+}
+
+.dark TextField {
+	color: #C4AFB4;
+}

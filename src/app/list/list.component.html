@@ -1,2 +1,23 @@
 <ActionBar title="Groceries"></ActionBar>
-<Label text="Hello World"></Label>
+
+<GridLayout rows="auto, *">
+	<GridLayout row="0" columns="*, auto" class="add-bar">
+		<TextField #groceryTextField [(ngModel)]="grocery" hint="Enter a grocery item" col="0"></TextField>
+		<Image src="~/app/images/add.png" col="1" (tap)="add()"></Image>
+	</GridLayout>
+
+	<RadListView row="1" [items]="groceryList" swipeActions="true" (itemSwipeProgressStarted)="onSwipeCellStarted($event)">
+
+		<ng-template let-item="item">
+			<Label [text]="item.name" class="p-15"></Label>
+		</ng-template>
+
+		<GridLayout *tkListItemSwipeTemplate columns="*, auto">
+			<StackLayout id="delete-view" col="1" (tap)="delete($event)" class="delete-view">
+				<Image src="~/app/images/delete.png"></Image>
+			</StackLayout>
+		</GridLayout>
+
+	</RadListView>
+
+</GridLayout>
